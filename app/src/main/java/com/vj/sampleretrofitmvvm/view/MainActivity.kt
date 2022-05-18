@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         if (NetworkHelper.hasInternet(this)) {
-            viewModel.getRepoList().observe(this, {
+            viewModel.getRepoList().observe(this) {
                 it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-            })
+            }
         } else {
             mProgress.visibility = View.GONE
             mRecyclerView.visibility = View.GONE
